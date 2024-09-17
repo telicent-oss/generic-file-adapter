@@ -72,7 +72,7 @@ Repository = "https://github.com/telicent-oss/generic-file-adapter"
 [tool.mypy]
 no_implicit_optional = false
 ignore_missing_imports = true
-modules = ["producers.generic_file_adapter"]
+modules = ["adapter.generic_file_adapter"]
 
 [tool.setuptools]
 py-modules = []
