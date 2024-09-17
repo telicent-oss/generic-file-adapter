@@ -1,0 +1,78 @@
+[project]
+name = "generic-file-adapter"
+version = "0.0.0"
+authors = [{name = "Telicent Ltd", email = "admin@telicent.io"}]
+description = ""
+requires-python = ">=3.12"
+license = {file = "LICENSE"}
+readme = "README.md"
+dependencies = [
+    "telicent-lib==2.0.3",
+    "python-dotenv==1.0.1",
+]
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development",
+    "Typing :: Typed",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Operating System :: Unix",
+    "Operating System :: MacOS",
+]
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md"]}
+
+[tool.ruff]
+target-version = "py312"
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+    "UP", # pyupgrade
+]
+ignore = [
+    "C901", # too complex
+]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "producers/archive",
+]
+line-length = 120
+
+[project.urls]
+Repository = "https://github.com/telicent-oss/generic-file-adapter"
+
+[tool.mypy]
+no_implicit_optional = false
+ignore_missing_imports = true
+modules = ["producers.generic_file_adapter"]
+
+[tool.setuptools]
+py-modules = []
