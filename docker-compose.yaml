@@ -1,7 +1,9 @@
 name: generic-file-adapter
 services:
   generic-adapter:
-    image: telicent/generic-file-adapter
+    # image: telicent/generic-file-adapter
+    image: cola:3
+    restart: no
     volumes:
       - type: bind
         # Source is the local file path which you want to mount into the container
@@ -9,7 +11,11 @@ services:
         source: ./data
         # Target is where the folder is being mounted
         # This is the folder the python should look at for config and the data files
-        target: /apps/data
+        target: /app/adapter/data
         read_only: true
     environment:
-      - BOOTSTRAP_SERVERS=localhost:9092
+      - BOOTSTRAP_SERVERS=host.docker.internal:9092
+      - PRODUCER_NAME=generic-file-adapter
+      - SOURCE_NAME=local-files
+      - CONTENT_TYPE=text/turtle
+      - TARGET_TOPIC=knowledge

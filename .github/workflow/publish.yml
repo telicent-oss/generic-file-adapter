@@ -1,0 +1,28 @@
+name: Build and push generic producer to docker hub
+
+on:
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - CHANGELOG.md
+
+  #add dispatch in case job fails and needs to be manually executed
+  workflow_dispatch:
+    inputs:
+        release_number:
+          description: 'Tag version to deploy'
+          required: true
+          default: latest
+          type: string
+
+jobs:
+  publish_api:
+   uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@TELFE-211/scan-secrets
+   with:
+      APP_NAME: generic-file-adapter
+      DOCKERFILE: Dockerfile
+      VERSION: ${{ inputs.release_number }}
+      ALLOW_MUTABLE_TAGS: false
+      APP_NAME_PREFIX: ""
+   secrets: inherit
