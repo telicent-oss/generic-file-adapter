@@ -39,11 +39,6 @@ def create_records(data, source_filename) -> Iterable[Record]:
     logger.debug(record)
     return record
 
-# def process_source(adapter) -> Record | list[Record] | None:
-#     logger.info(f"loading {file_path}")
-#     adapter.send(create_records(data, file_path))
-#     logger.info(f"File {file_path} Uploaded")
-#     # return None
 
 if __name__ == "__main__":
 

@@ -170,3 +170,4 @@ cython_debug/
 
 # Ignore all files in /adapter/data
 /adapter/data/*
+/data
