@@ -1,8 +1,7 @@
 name: generic-file-adapter
 services:
   generic-adapter:
-    # image: telicent/generic-file-adapter
-    image: cola:3
+    image: telicent/generic-file-adapter:0.1.1
     restart: no
     volumes:
       - type: bind

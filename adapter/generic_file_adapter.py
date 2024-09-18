@@ -27,7 +27,7 @@ def create_records(data, source_filename) -> Iterable[Record]:
     record = Record(
         RecordUtils.to_headers(
             {
-                "Security-Label": default_security_label,
+                # "Security-Label": default_security_label,
                 "Content-Type": content_type,
                 "Data-Source": source_filename,
                 "Data-Producer": name,
