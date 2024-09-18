@@ -19,20 +19,22 @@ source_name=config.get("SOURCE_NAME", required=True,
                     description="Specifies the source that the data has originated from")
 content_type=config.get("CONTENT_TYPE", required=True,
                     description="Specifies the content type of the payload source that the data has originated from")
-default_security_label = "*"
+default_label=config.get("DEFAULT_LABEL", required=False,
+                    description="Specifies the default ABAC label to use.")
 
 logger = getLogger(__name__)
 
 def create_records(data, source_filename) -> Iterable[Record]:
+    header =  {
+        "Content-Type": content_type,
+        "Data-Source": source_filename,
+        "Data-Producer": name
+    }
+    if default_label:
+        header["Security-Label"] = default_label
+
     record = Record(
-        RecordUtils.to_headers(
-            {
-                # "Security-Label": default_security_label,
-                "Content-Type": content_type,
-                "Data-Source": source_filename,
-                "Data-Producer": name,
-            }
-        ),
+        RecordUtils.to_headers(header),
         None,
         data.encode('utf-8')
     )

@@ -1,7 +1,7 @@
 name: generic-file-adapter
 services:
   generic-adapter:
-    image: telicent/generic-file-adapter:0.1.1
+    image: telicent/generic-file-adapter:0.2.0
     restart: no
     volumes:
       - type: bind
@@ -18,3 +18,4 @@ services:
       - SOURCE_NAME=local-files
       - CONTENT_TYPE=text/turtle
       - TARGET_TOPIC=knowledge
+      - DEFAULT_LABEL=*
