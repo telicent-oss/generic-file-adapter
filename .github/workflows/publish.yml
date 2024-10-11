@@ -1,4 +1,5 @@
-name: Build and push generic producer to docker hub
+# Build and push generic producer to docker hub
+name: publish.yaml
 
 on:
   # push:
@@ -18,7 +19,7 @@ on:
 
 jobs:
   publish_api:
-   uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@TELFE-211/scan-secrets
+   uses: telicent-oss/shared-workflows/.github/workflows/docker-push-to-registries.yml@main
    with:
       APP_NAME: generic-file-adapter
       DOCKERFILE: Dockerfile
